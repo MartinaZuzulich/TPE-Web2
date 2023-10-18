@@ -1,17 +1,24 @@
-       
-<div class="row">
-          <?php foreach($products as $t){?>
-            <div class="col-sm-6">
-                <div class="card text-center" style="width: 18rem">
-                    <div class="card-body">
-                        <a href="verProducto/<?php echo $t->id_producto?>"> <?php echo $t->nombre_producto?></a>
-                    </div>
-                </div>
-            </div>        <?php } ?>
+
+<div class="containerCategorias">       
+    <div class="containerH2Categorias">
+            <h2 class="h2Categorias">productos</h2>
+    </div>
+    <div class="containerCards">
+        <?php foreach($products as $t){?>
+            <div class="card">
+                <a class="aCategoria" href="verProducto/<?php echo $t->id_producto?>"> <?php echo $t->nombre_producto?></a>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+
+
 
 <?php if (isset($_SESSION['email'])) : ?>
 
-    <form class="formAgregarProducto" action="agregarProducto" method="POST">
+    <div class="containerFormAgregarCategoria">
+    
+    <form class="formAgregarCategoria" action="agregarProducto" method="POST">
     <div>
         <h2>Agregar producto</h2>
     </div>
@@ -30,11 +37,14 @@
                 <?php foreach ($categorias as $t) : ?>
                     <option value= "<?php echo $t->id_categoria ?>"> <?php echo $t->nombre_categoria ?> </option>        
                     <?php endforeach; ?>
-                </select><br>
-                <button value="" id="btnAgregarProducto" type="submit" class="btn btn-primary mt">Agregar</button>
-            </div>
+                </select>
+                </div>
+                </div>
+                <button value="" id="btnAgregarCategoria" type="submit" class="btn btn-primary mt-2">Agregar</button>
+            
+        
         </div>
-    </div>
+                </div>
 </form>
 
 <?php endif; ?>

@@ -9,20 +9,6 @@ $action = 'home';
         $action = $_GET['action'];
     }
 
-// mostrar    ->        productoController->showProducts();
-// agregar   ->         categoriaController->addCategoy();
-// eliminar/:ID  ->     categoriaController->removeCategory($id); 
-// finalizar/:ID  ->    categoriaController->finishTask($id);
-// about ->             aboutController->showAbout();
-// login ->             authContoller->showLogin();
-// logout ->            authContoller->logout();
-// auth                 authContoller->auth(); // toma los datos del post y autentica al usuario
-
-
-
-
-
-
     $params = explode('/', $action);
     switch ($params[0]) {
         case 'login':
@@ -44,11 +30,6 @@ $action = 'home';
         case 'verifyRegister' :
             $controller = new AuthController();
             $controller->verifyRegister();
-            break;
-
-        case 'index':
-            $controller = new productosController();
-            $controller->showIndex();
             break;
         
         case 'productos':
@@ -87,7 +68,7 @@ $action = 'home';
             break;
         case 'verCategoria' :
             $controller = new productosController();
-            $controller->viewCategory($params[1]);
+            $controller->viewProduct($params[1]);
             break;
         case 'eliminar' :
             $controller = new categoriasController();
@@ -107,6 +88,6 @@ $action = 'home';
             break;
         default :
             $controller = new productosController();
-            $controller->showIndex();
+            $controller->showProducts();
             break;
     }

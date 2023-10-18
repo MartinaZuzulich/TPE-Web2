@@ -16,10 +16,6 @@ class productosController {
         $this->view = new viewProducts();
     }
 
-    public function showIndex() {
-        $this->view->showIndex();
-    }
-
     function showProducts() {
         session_start();
         $products = $this->model->getProduct();
@@ -27,14 +23,15 @@ class productosController {
         $this->view->viewProducts($products,$categoria);
     }
 
-    function viewCategory($id){                             
+    function viewProduct($id){    
+        session_start();                    
         $products = $this->categoriasModel->getProductWithCategory($id);
         $this->view->viewItem($products);
     }
 
 
     function viewProductoID($id_producto) {
-            session_start();
+        session_start();
         $products = $this->model->getProductWithCategory($id_producto);
         $categoria = $this->categoriasModel->getCategoryById($products->id_categoria);
         $this->view->viewProductoID($id_producto, $products->nombre_producto, $products->precio, $products->modelo, $categoria->nombre_categoria);
